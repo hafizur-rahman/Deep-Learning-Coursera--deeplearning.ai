@@ -19,3 +19,28 @@ print(img_tensor.shape)
 import matplotlib.pyplot as plt
 
 plt.imshow(img_tensor[0])
+
+
+Example 2:
+img_path = '/Users/shashank/Downloads/SpringboardDatascience/_1Deeplearning/Deep_learning_with_Python/Chapter5_assignment/8.jpg'
+
+# We preprocess the image into a 4D tensor
+from keras.preprocessing import image
+import numpy as np
+from keras.applications.vgg16 import preprocess_input, decode_predictions
+# input image 224*224
+img = image.load_img(img_path, target_size=(224, 224))
+# to change to float32: (224,224,3)
+img_tensor = image.img_to_array(img)
+# add a dimension to transform our array to batch (1,224,224,3)
+img_tensor = np.expand_dims(img_tensor, axis=0)
+# Remember that the model was trained on inputs
+# that were preprocessed in the following way:
+
+# Its shape is (1, 224, 224, 3)
+print(img_tensor.shape)
+import matplotlib.pyplot as plt
+
+plt.imshow(img_tensor[0])
+# preprocess the batch , this doesn channel wise color normalization
+x= preprocess_input(x)
